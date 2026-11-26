@@ -1063,7 +1063,7 @@ body[data-wake="1"] .onair .dot{box-shadow:0 0 10px var(--lime)}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 22px 44px -40px rgba(46,230,255,.9);
   display:none;
 }
-.code-studio[data-open="1"]{display:flex;flex-direction:column}
+.code-studio[data-open="1"]{display:flex;flex-direction:column;min-height:min(330px,46vh)}
 .code-studio[data-open="1"] .cs-head,
 .code-studio[data-open="1"] .cs-foot{flex:0 0 auto}
 .code-studio[data-open="1"] .cs-body{flex:1 1 auto;min-height:0;overflow:auto;padding-bottom:2px}
@@ -1129,6 +1129,14 @@ body[data-wake="1"] .onair .dot{box-shadow:0 0 10px var(--lime)}
 .cs-btn:hover{border-color:var(--line-2);background:rgba(255,255,255,.08)}
 .cs-btn.acc{border-color:rgba(45,220,140,.4);background:rgba(45,220,140,.12);color:#c8ffe4}
 .cs-stats{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--dim-2)}
+
+/* 스튜디오가 열리면 무대가 넘치지 않게 접히는 것들을 접고, 무대는 스크롤한다 */
+body[data-studio="1"] .stage{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+body[data-studio="1"] .stage::-webkit-scrollbar{width:6px}
+body[data-studio="1"] .stage::-webkit-scrollbar-thumb{background:rgba(46,230,255,.28);border-radius:6px}
+body[data-studio="1"] .quick,
+body[data-studio="1"] .cmd-guide{display:none}
+.code-studio[data-open="1"] ~ .mcp-bar{flex:0 0 auto}
 
 @media (max-width:860px){
   .code-studio[data-open="1"] ~ .quick,
@@ -7841,6 +7849,7 @@ var AVATARS = {"minjun":"assets/avatars/minjun-256.webp","taeo":"assets/avatars/
     if ($("codeStudioBtn")) {
       $("codeStudioBtn").className = "chip code-chip" + (studio.open ? " on" : "");
     }
+    try { document.body.setAttribute("data-studio", studio.open ? "1" : "0"); } catch (e) {}
   }
 
   /* 실행 미리보기 — sandbox="allow-scripts" iframe 에 srcdoc 로 넣는다 */
@@ -7885,6 +7894,13 @@ var AVATARS = {"minjun":"assets/avatars/minjun-256.webp","taeo":"assets/avatars/
   function openCodeStudio(on) {
     studio.open = on !== false;
     paintStudio();
+    if (studio.open) {
+      /* 열린 패널이 화면 밖이면 가까이로 끌어온다 */
+      setTimeout(function () {
+        var panel = $("codeStudio");
+        if (panel && panel.scrollIntoView) { try { panel.scrollIntoView({ block: "nearest" }); } catch (e) {} }
+      }, 80);
+    }
   }
 
   function fillStudio(res) {
