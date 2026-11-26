@@ -1,8 +1,8 @@
 /* VOICE AGENT 20 — offline app shell.
    정적 자산은 캐시 우선, 화면(index.html)은 네트워크 우선으로 받아
    업데이트와 오프라인 실행을 동시에 만족시킵니다. */
-var VERSION = "2.0.0";
-var CACHE = "voice-agent-20-v" + VERSION;
+var VERSION = "2.1.0";
+var CACHE = "voice-agent-21-v" + VERSION;
 var PRECACHE = [
   "./",
   "./index.html",
