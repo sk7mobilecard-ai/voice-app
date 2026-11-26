@@ -6208,12 +6208,16 @@ var AVATARS = {"minjun":"assets/avatars/minjun-256.webp","taeo":"assets/avatars/
 
     addLog("user", null, text);
 
-    /* explicit console commands */
-    if (/^(전체\s*)?(목록|리스트|명단)|누구\s*있|스무\s*명|20\s*명/.test(text)) { listVoices(); return; }
-    if (/(미리\s*듣기|목소리\s*들려|한번\s*들려|샘플)/.test(text)) { previewVoice(true); return; }
-    if (/(랜덤|아무나|무작위)/.test(text)) { randomVoice(); return; }
-    if (/^(다음|넥스트)(\s*(목소리|채널))?$/.test(text)) { nextVoice(1); return; }
-    if (/^(이전|앞|비포)(\s*(목소리|채널))?$/.test(text)) { nextVoice(-1); return; }
+    /* explicit console commands — 코딩 요청은 “랜덤 뽑기 게임”처럼 겹치는 말이
+       있어도 코드 스튜디오로 보낸다 */
+    var codeIntent = L.AGENT.looksCode(text);
+    if (!codeIntent) {
+      if (/^(전체\s*)?(목록|리스트|명단)|누구\s*있|스무\s*명|20\s*명/.test(text)) { listVoices(); return; }
+      if (/(미리\s*듣기|목소리\s*들려|한번\s*들려|샘플)/.test(text)) { previewVoice(true); return; }
+      if (/(랜덤|아무나|무작위)/.test(text)) { randomVoice(); return; }
+      if (/^(다음|넥스트)(\s*(목소리|채널))?$/.test(text)) { nextVoice(1); return; }
+      if (/^(이전|앞|비포)(\s*(목소리|채널))?$/.test(text)) { nextVoice(-1); return; }
+    }
 
     /* numeric channel call */
     var slot = L.detectSlot(text);
