@@ -1063,7 +1063,7 @@ body[data-wake="1"] .onair .dot{box-shadow:0 0 10px var(--lime)}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 22px 44px -40px rgba(46,230,255,.9);
   display:none;
 }
-.code-studio[data-open="1"]{display:flex;flex-direction:column;min-height:min(330px,46vh)}
+.code-studio[data-open="1"]{display:flex;flex-direction:column}
 .code-studio[data-open="1"] .cs-head,
 .code-studio[data-open="1"] .cs-foot{flex:0 0 auto}
 .code-studio[data-open="1"] .cs-body{flex:1 1 auto;min-height:0;overflow:auto;padding-bottom:2px}
@@ -1095,7 +1095,7 @@ body[data-wake="1"] .onair .dot{box-shadow:0 0 10px var(--lime)}
 .cs-pane[hidden]{display:none}
 
 .cs-editor{
-  width:100%;height:clamp(130px,24vh,230px);min-height:110px;resize:vertical;
+  width:100%;height:clamp(116px,19vh,190px);min-height:104px;resize:vertical;
   font-family:var(--mono);font-size:11.5px;line-height:1.6;
   color:#d7e8ff;background:rgba(0,0,0,.5);border:1px solid rgba(46,230,255,.16);
   border-radius:10px;padding:10px 12px;outline:none;
@@ -1104,7 +1104,7 @@ body[data-wake="1"] .onair .dot{box-shadow:0 0 10px var(--lime)}
 .cs-editor:focus{border-color:rgba(46,230,255,.45);box-shadow:0 0 0 3px rgba(46,230,255,.08)}
 
 .cs-frame{
-  width:100%;height:clamp(170px,34vh,300px);min-height:150px;border:1px solid rgba(46,230,255,.16);
+  width:100%;height:clamp(150px,25vh,235px);min-height:132px;border:1px solid rgba(46,230,255,.16);
   border-radius:10px;background:#0b0e17;display:block;
 }
 .cs-hint{
@@ -1136,6 +1136,11 @@ body[data-studio="1"] .stage::-webkit-scrollbar{width:6px}
 body[data-studio="1"] .stage::-webkit-scrollbar-thumb{background:rgba(46,230,255,.28);border-radius:6px}
 body[data-studio="1"] .quick,
 body[data-studio="1"] .cmd-guide{display:none}
+/* 넓은 화면에서는 파형 영역을 잠시 접어 코드에 자리를 준다 */
+@media (min-width:861px){
+  body[data-studio="1"] .visual{display:none}
+  body[data-studio="1"] .agent-body{max-height:150px;overflow:auto}
+}
 .code-studio[data-open="1"] ~ .mcp-bar{flex:0 0 auto}
 
 @media (max-width:860px){
