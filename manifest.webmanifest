@@ -1,0 +1,93 @@
+{
+  "id": "./",
+  "name": "VOICE AGENT 20 · AI 보이스 에이전트 스튜디오",
+  "short_name": "보이스에이전트",
+  "description": "말로 명령하면 계획·도구·실행 3단계로 처리하는 보이스 에이전트. 스무 명의 AI 목소리와 빅스비식 호출어를 함께 씁니다.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "theme_color": "#05060b",
+  "background_color": "#05060b",
+  "categories": [
+    "productivity",
+    "utilities",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "민준와 대화",
+      "short_name": "민준",
+      "url": "./index.html?voice=minjun",
+      "icons": [
+        {
+          "src": "assets/avatars/minjun-256.webp",
+          "sizes": "256x256",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "서연와 대화",
+      "short_name": "서연",
+      "url": "./index.html?voice=seoyeon",
+      "icons": [
+        {
+          "src": "assets/avatars/seoyeon-256.webp",
+          "sizes": "256x256",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "하준와 대화",
+      "short_name": "하준",
+      "url": "./index.html?voice=hajun",
+      "icons": [
+        {
+          "src": "assets/avatars/hajun-256.webp",
+          "sizes": "256x256",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "별하와 대화",
+      "short_name": "별하",
+      "url": "./index.html?voice=byeolha",
+      "icons": [
+        {
+          "src": "assets/avatars/byeolha-256.webp",
+          "sizes": "256x256",
+          "type": "image/webp"
+        }
+      ]
+    }
+  ]
+}
