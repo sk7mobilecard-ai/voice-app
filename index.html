@@ -1067,7 +1067,7 @@ body[data-wake="1"] .onair .dot{box-shadow:0 0 10px var(--lime)}
 .code-studio[data-open="1"] .cs-head,
 .code-studio[data-open="1"] .cs-foot{flex:0 0 auto}
 .code-studio[data-open="1"] .cs-body{flex:1 1 auto;min-height:0;overflow:auto;padding-bottom:2px}
-.code-studio[data-open="1"]{display:block;animation:csIn .28s ease both}
+.code-studio[data-open="1"]{animation:csIn .28s ease both}
 @keyframes csIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 .cs-head{display:flex;align-items:center;gap:6px;padding:8px 10px;min-width:0;flex-wrap:wrap}
@@ -1136,11 +1136,9 @@ body[data-studio="1"] .stage::-webkit-scrollbar{width:6px}
 body[data-studio="1"] .stage::-webkit-scrollbar-thumb{background:rgba(46,230,255,.28);border-radius:6px}
 body[data-studio="1"] .quick,
 body[data-studio="1"] .cmd-guide{display:none}
-/* 넓은 화면에서는 파형 영역을 잠시 접어 코드에 자리를 준다 */
-@media (min-width:861px){
-  body[data-studio="1"] .visual{display:none}
-  body[data-studio="1"] .agent-body{max-height:150px;overflow:auto}
-}
+/* 코드에 자리를 주려고 파형 영역을 잠시 접는다 */
+body[data-studio="1"] .visual{display:none}
+body[data-studio="1"] .agent-body{max-height:min(176px,24vh);overflow:auto}
 .code-studio[data-open="1"] ~ .mcp-bar{flex:0 0 auto}
 
 @media (max-width:860px){
